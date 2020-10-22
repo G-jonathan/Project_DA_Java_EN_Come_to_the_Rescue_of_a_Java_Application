@@ -5,19 +5,35 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * This class contains a method which browse a list of symptoms, 
+/**
+ * This class contains a method which browse a list of symptoms,
  * counts the occurrences of each symptom 
- * and writes the result to a file
+ * and write the result to a file
+ * 
+ * @author jonathan
+ *
  */
 
 public class WriteSymptomsResultInFile {
 	
 	private List<String> arraySymptoms;
+	
+	/**
+	 * Constructor
+	 * @param arraySymptoms
+	 * 		A list of symptoms
+	 */
 
 	public WriteSymptomsResultInFile(List<String> arraySymptoms) {
 		this.arraySymptoms = arraySymptoms;
 	}
+	
+	/**
+	 * Extract the differents symptoms and count their occurrences
+	 * Generates a file containing the list of symptoms and the number of times they appear in the file
+	 * 
+	 * @throws IOException
+	 */
 
 	public void WriteSymptoms() throws IOException {
 		FileWriter writer = new FileWriter("result.out");
