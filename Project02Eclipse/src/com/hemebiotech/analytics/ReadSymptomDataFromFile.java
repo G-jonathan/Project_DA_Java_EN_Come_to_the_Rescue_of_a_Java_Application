@@ -7,30 +7,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple brute force implementation
- *
- * This class browses a file containing a list of symptoms.
- * She return a list of Strings that contain the symptoms extracted from the file
- * 
+ * This class contain a method which browses a file containing a list of symptoms
+ * and return an array that contain the symptoms extracted from the file
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
 	
 	/**
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * @param filepath to a file with symptom strings in it, one per line
 	 */
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
 	
-	@Override
 	/**
 	 * Browses a file containing a list of symptoms
-	 * @return
-	 * 		return an array that contain the symptoms extracted from the file
-	 * 
+	 * @exception  Triggered if no data is available
+	 * @return return an array that contain the symptoms extracted from the file
+	 * duplicates are possible/probable
 	 */
+	@Override
 	public List<String> GetSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
 		
@@ -39,7 +36,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				BufferedReader reader = new BufferedReader (new FileReader(filepath));
 				String line = reader.readLine();
 				
-				while (line != null) {
+				while (line != null) { // we browse the file line by line then we add the content of each line in the result array
 					result.add(line);
 					line = reader.readLine();
 				}

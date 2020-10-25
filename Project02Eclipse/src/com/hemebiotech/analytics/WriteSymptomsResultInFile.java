@@ -7,23 +7,18 @@ import java.util.List;
 
 /**
  * This class contains a method which browse a list of symptoms,
- * counts the occurrences of each symptom 
- * and write the result to a file
- * 
- * @author jonathan
- *
+ * counts the occurrences of each symptom and write the result to a file
+ * @author jonathan.G
+ * @since 1.0
  */
-
-public class WriteSymptomsResultInFile {
+public class WriteSymptomsResultInFile implements ISymptomsWriter{
 	
 	private List<String> arraySymptoms;
 	
 	/**
 	 * Constructor
-	 * @param arraySymptoms
-	 * 		A list of symptoms
+	 * @param arraySymptoms A list of symptoms
 	 */
-
 	public WriteSymptomsResultInFile(List<String> arraySymptoms) {
 		this.arraySymptoms = arraySymptoms;
 	}
@@ -31,10 +26,8 @@ public class WriteSymptomsResultInFile {
 	/**
 	 * Extract the differents symptoms and count their occurrences
 	 * Generates a file containing the list of symptoms and the number of times they appear in the file
-	 * 
-	 * @throws IOException
+	 * @throws IOException 
 	 */
-
 	public void WriteSymptoms() throws IOException {
 		FileWriter writer = new FileWriter("result.out");
 		ArrayList<String> deduplication = new ArrayList<String>();
@@ -61,7 +54,7 @@ public class WriteSymptomsResultInFile {
 						nombre += 1;
 					}
 				}
-				writer.write("number of " + symptomReading + " is " + nombre + "\n"); // we write the symptom and its number in the file
+				writer.write("The symptom: \"" + symptomReading + "\" appears " + nombre + " times." + "\n"); // we write the symptom and its number in the file
 				deduplication.add(symptomReading); // then we add this data in deduplication array to no longer have to count it	
 			}
 		}
