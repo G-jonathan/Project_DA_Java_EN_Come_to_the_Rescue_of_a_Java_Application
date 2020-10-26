@@ -36,7 +36,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				BufferedReader reader = new BufferedReader (new FileReader(filepath));
 				String line = reader.readLine();
 				
-				while (line != null) { // we browse the file line by line then we add the content of each line in the result array
+				while (line != null) {
 					result.add(line);
 					line = reader.readLine();
 				}
