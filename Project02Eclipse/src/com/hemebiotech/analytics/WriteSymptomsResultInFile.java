@@ -2,7 +2,6 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,34 +43,13 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	 *                     file, drive or disk access type action
 	 */
 	public void WriteSymptoms() throws IOException {
-		ArrayList<String> deduplication = new ArrayList<String>();
 		Collections.sort(arraySymptoms);
 
-		for (int i = 0; i < arraySymptoms.size(); i++) {
-
-			boolean exist = false;
-			int nombre = 0;
+		for (int i = 0; i < arraySymptoms.size();) {
 			String symptomReading = arraySymptoms.get(i);
-
-			for (int j = 0; j < deduplication.size() && exist == false; j++) {
-
-				String symptomAlreadyCount = deduplication.get(j);
-
-				if (symptomReading.equals(symptomAlreadyCount)) {
-					exist = true;
-				}
-			}
-			if (exist == false) {
-				for (int k = 0; k < arraySymptoms.size(); k++) {
-
-					String compare = arraySymptoms.get(k);
-					if (symptomReading.equals(compare)) {
-						nombre += 1;
-					}
-				}
-				writer.write("The symptom: \"" + symptomReading + "\" appears " + nombre + " times." + "\n");
-				deduplication.add(symptomReading);
-			}
+			int frequency = Collections.frequency(arraySymptoms, symptomReading);
+			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");
+			i += frequency;
 		}
 		writer.close();
 	}
