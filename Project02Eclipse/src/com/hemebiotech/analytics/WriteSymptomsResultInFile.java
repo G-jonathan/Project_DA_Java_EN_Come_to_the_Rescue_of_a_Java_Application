@@ -36,10 +36,8 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	/**
 	 * Extract the different symptoms and count their occurrences
 	 * 
-	 * Each symptom already counted is added to an array which is checked at each
-	 * iteration to avoid counting the same symptom several times. Generates a file
-	 * containing the list of symptoms and the number of times they appear in the
-	 * file
+	 * TreeSet is used to have a sorted symptoms list version without duplicates
+	 * Then for each symptom, we count the occurrences in the original array
 	 * 
 	 * @throws IOException If an input/output error occurs like a problem with a
 	 *                     file, drive or disk access type action
@@ -51,14 +49,6 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 			int frequency = Collections.frequency(symptoms, symptomReading);
 			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");		
 		}
-
-		
-		/*for (int i = 0; i < arraySymptoms.size();) {
-			String symptomReading = arraySymptoms.get(i);
-			int frequency = Collections.frequency(arraySymptoms, symptomReading);
-			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");
-			i += frequency;
-		}*/
 		writer.close();
 	}
 }
