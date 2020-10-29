@@ -43,9 +43,9 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	 *                     file, drive or disk access type action
 	 */
 	public void WriteSymptoms() throws IOException {
-		final TreeSet<String> arraySymptomsWithoutDuplicates = new TreeSet<String>(symptoms);
+		final TreeSet<String> symptomsWithoutDuplicates = new TreeSet<String>(symptoms);
 		
-		for (String symptomReading : arraySymptomsWithoutDuplicates) {
+		for (String symptomReading : symptomsWithoutDuplicates) {
 			int frequency = Collections.frequency(symptoms, symptomReading);
 			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");		
 		}
