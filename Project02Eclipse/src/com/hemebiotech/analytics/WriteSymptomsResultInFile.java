@@ -3,7 +3,9 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * This class contains a method which browse a list of symptoms, counts the
@@ -14,20 +16,20 @@ import java.util.List;
  */
 public class WriteSymptomsResultInFile implements ISymptomsWriter {
 
-	private List<String> arraySymptoms;
+	private List<String> symptoms;
 	private FileWriter writer;
-
+	
 	/**
 	 * Constructor
 	 * 
-	 * @param arraySymptoms A list of symptoms
+	 * @param symptoms A list of symptoms
 	 * @param fileName      The name of the file that will contain the final data
 	 * @throws IOException If the named file exists but is a directory rather than a
 	 *                     regular file, does not exist but cannot be created, or
 	 *                     cannot be opened for any other reason
 	 */
-	public WriteSymptomsResultInFile(List<String> arraySymptoms, String fileName) throws IOException {
-		this.arraySymptoms = arraySymptoms;
+	public WriteSymptomsResultInFile(List<String> symptoms, String fileName) throws IOException {
+		this.symptoms = symptoms;
 		this.writer = new FileWriter(fileName);
 	}
 
@@ -43,14 +45,20 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	 *                     file, drive or disk access type action
 	 */
 	public void WriteSymptoms() throws IOException {
-		Collections.sort(arraySymptoms);
+		final TreeSet<String> arraySymptomsWithoutDuplicates = new TreeSet<String>(symptoms);
+		
+		for (String symptomReading : arraySymptomsWithoutDuplicates) {
+			int frequency = Collections.frequency(symptoms, symptomReading);
+			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");		
+		}
 
-		for (int i = 0; i < arraySymptoms.size();) {
+		
+		/*for (int i = 0; i < arraySymptoms.size();) {
 			String symptomReading = arraySymptoms.get(i);
 			int frequency = Collections.frequency(arraySymptoms, symptomReading);
 			writer.write("The symptom: \"" + symptomReading + "\" appears " + frequency + " times." + "\n");
 			i += frequency;
-		}
+		}*/
 		writer.close();
 	}
 }
