@@ -1,6 +1,8 @@
 package com.hemebiotech.analytics;
 
 import java.io.IOException;
+import java.util.List;
+
 
 /**
  * Used to browse a list of symptoms
@@ -14,5 +16,5 @@ public interface ISymptomsWriter {
 	 * Void method
 	 * @throws IOException 
 	 */
-	void WriteSymptoms () throws IOException;
+	void WriteSymptoms (List<String> symptoms) throws IOException;
 }

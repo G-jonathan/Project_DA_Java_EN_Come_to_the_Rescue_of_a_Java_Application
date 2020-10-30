@@ -3,7 +3,6 @@ package com.hemebiotech.analytics;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -16,7 +15,7 @@ import java.util.TreeSet;
  */
 public class WriteSymptomsResultInFile implements ISymptomsWriter {
 
-	private List<String> symptoms;
+	//private List<String> symptoms;
 	private FileWriter writer;
 	
 	/**
@@ -28,9 +27,14 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	 *                     regular file, does not exist but cannot be created, or
 	 *                     cannot be opened for any other reason
 	 */
-	public WriteSymptomsResultInFile(List<String> symptoms, String fileName) throws IOException {
-		this.symptoms = symptoms;
-		this.writer = new FileWriter(fileName);
+	public WriteSymptomsResultInFile(String fileName)  {
+		//this.symptoms = symptoms;
+		try {
+			this.writer = new FileWriter(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -42,7 +46,7 @@ public class WriteSymptomsResultInFile implements ISymptomsWriter {
 	 * @throws IOException If an input/output error occurs like a problem with a
 	 *                     file, drive or disk access type action
 	 */
-	public void WriteSymptoms() throws IOException {
+	public void WriteSymptoms(List<String> symptoms) throws IOException {
 		final TreeSet<String> symptomsWithoutDuplicates = new TreeSet<String>(symptoms);
 		
 		for (String symptomReading : symptomsWithoutDuplicates) {
