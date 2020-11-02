@@ -7,7 +7,7 @@ This is a trend analysis program for the heme biotech company.
 The goal is to be able to collect a file of symptoms list(with possibility of duplicates), and provide a final file containing the list of all symptoms and their number of occurrences in alphabetical order.
 
 #### **Heme Biotech - *Remedies for those we love.***
-![](ressources/img/heme_biotech_logo.jpeg)
+![](Project02Eclipse/ressources/img/heme_biotech_logo.jpeg)
 
 ## Version
 Bêta-test</br>
@@ -28,6 +28,7 @@ JavaDoc is in comment header for each function and we use GitFlow by creating ne
 ## Usage
 1. #### Expected Input
 Filepath to a file with symptom strings in it, one per line.
+
 2. #### Expected output
 A file containing the list of all symptoms and their number of occurrences in alphabetical order.
 
