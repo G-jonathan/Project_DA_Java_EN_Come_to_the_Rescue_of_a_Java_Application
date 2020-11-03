@@ -1,7 +1,7 @@
 package com.hemebiotech.analytics;
 
-
-public class AnalyticsCounter  {
+public class AnalyticsCounter {
+	
 	private static InstantiationIntermediary intermediary = new InstantiationIntermediary();
 
 	/**

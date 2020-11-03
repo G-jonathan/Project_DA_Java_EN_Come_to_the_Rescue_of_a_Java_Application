@@ -3,20 +3,23 @@ package com.hemebiotech.analytics;
 import java.io.IOException;
 import java.util.List;
 
-
 /**
- * Used to browse a list of symptoms and generates a file containing each
- * symptoms and the number of times they appear in the file
+ * Browse a list of symptoms, count their occurrences and generates an output
+ * result.
+ * 
+ * The implementation must eliminate duplicates and sort the result in
+ * alphabetical order
  * 
  * @author Jonathan.G
  * @since 0.3
  */
 public interface ISymptomsWriter {
-	
+
 	/**
-	 * Void method
 	 * 
-	 * @throws IOException
+	 * @param symptoms A list of symptoms
+	 * @throws IOException If an input/output error occurs like a problem with a
+	 *                     file, drive or disk access type action
 	 */
 	void WriteSymptoms (List<String> symptoms) throws IOException;
 }
