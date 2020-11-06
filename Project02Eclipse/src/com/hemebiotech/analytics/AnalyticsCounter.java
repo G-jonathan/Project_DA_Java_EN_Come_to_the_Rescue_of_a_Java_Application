@@ -1,10 +1,8 @@
 package com.hemebiotech.analytics;
 
-import java.util.List;
-
 public class AnalyticsCounter {
-
-	private static String symptomsFile = "../Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/Project02Eclipse/symptoms.txt";
+	
+	private static InstantiationIntermediary intermediary = new InstantiationIntermediary();
 
 	/**
 	 * This is the entry point of the program
@@ -13,11 +11,6 @@ public class AnalyticsCounter {
 	 * @throws Exception If an input/output error occurs
 	 */
 	public static void main(String args[]) throws Exception {
-
-		ReadSymptomDataFromFile read = new ReadSymptomDataFromFile(symptomsFile);
-		List<String> result = read.GetSymptoms();
-
-		WriteSymptomsResultInFile write = new WriteSymptomsResultInFile(result, "result.out");
-		write.WriteSymptoms();
+		intermediary.start();
 	}
 }

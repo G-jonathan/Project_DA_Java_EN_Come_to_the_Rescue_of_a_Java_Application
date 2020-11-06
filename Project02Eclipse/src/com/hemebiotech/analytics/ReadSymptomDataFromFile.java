@@ -23,6 +23,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	
 	/**
 	 * Browses a file containing a list of symptoms
+	 * 
 	 * @exception  Triggered if no data is available
 	 * @return return an array that contain the symptoms extracted from the file
 	 * duplicates are possible/probable
@@ -45,8 +46,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				e.printStackTrace();
 			}
 		}
-		
 		return result;
 	}
-
 }
