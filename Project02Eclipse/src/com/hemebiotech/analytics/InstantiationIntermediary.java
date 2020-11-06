@@ -14,8 +14,7 @@ public class InstantiationIntermediary {
 	private static String resultFile = "../Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/Project02Eclipse/result.out";
 	private Processing launch;
 	
-	public InstantiationIntermediary(){
-		
+	public InstantiationIntermediary() {
 		  ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile(symptomsFile);
 		  WriteSymptomsResultInFile writer = new WriteSymptomsResultInFile(resultFile);
 		  launch = new Processing(reader, writer);
